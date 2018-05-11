@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<table class="table-bordered .table-striped">
+      <thead>
+    <tr>
+      <th scope="col">Номер заказа</th>
+      <th scope="col">Название товара</th>
+      <th scope="col">Кол-во</th>
+      <th scope="col">Изменить кол-во</th>
+      <th scope="col">Цена</th>
+      <th scope="col">Заказ отправлен</th>
+      <th scope="col">Заказ закрыт</th>
+      <th scope="col">Удалить заказ</th>
+    </tr>
+  </thead>
+    <tbody>
+
+    {% for t in tovar %}
+        <tr>
+        <td>{{t.id}}</td>
+        <td>{{t.book.nameBook}}</td>
+        <td><input id="count book" type="text" value="{{t.countBook}}"> </td>
+        <td>
+            <a href="{% url 'changeCountAdd' t.id %}"><button class="btn btn-primary">Изм. +1</button></a>
+            <a href="{% url 'changeCountRet' t.id %}"><button class="btn btn-primary">Изм. -1</button></a>
+        </td>
+        <td>{{t.book.bookPrice}}</td>
+        <td>{{t.send}}</td>
+        <td>{{t.close}}</td>
+        <td><a href="{% url 'deleteRow' t.id %}"><button class="btn btn-danger">Удалить</button></a></td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    <a href="{% url 'clearCart' %}">
+        <button class="btn btn-danger">Очистить корзину</button>
+    </a>
+{% endblock %}

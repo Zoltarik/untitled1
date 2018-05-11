@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<h1 class="text-center p-3">Вы не авторизованы, зарегистрируйтесь или авторизутесь</h1>
+    <a class="text-center p-3" href="{% url 'home' %}">Перейти на гавнуб страницу</a>
+{% endblock %}
